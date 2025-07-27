@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './homePage.css';
 
 export default function HomePage() {
@@ -10,6 +11,7 @@ export default function HomePage() {
         </p>
         <button className="hero-button">Browse Collection</button>
       </div>
+      <Link to="/login">Login</Link>
     </div>
   );
 }
