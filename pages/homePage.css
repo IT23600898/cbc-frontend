@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Hero section with background image and overlay */
+.hero-section {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1610274964733-e6ed5b4d3da1') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Light overlay for contrast */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+/* Text content wrapper */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  max-width: 700px;
+}
+
+/* Title styling */
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #9c1c5d;
+  margin-bottom: 20px;
+}
+
+/* Subtitle paragraph */
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  padding: 0 10px;
+}
+
+/* CTA Button */
+.hero-button {
+  padding: 14px 30px;
+  font-size: 1rem;
+  background-color: #9c1c5d;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-button:hover {
+  background-color: #7d154a;
+  transform: scale(1.05);
+}
