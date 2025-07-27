@@ -1,70 +1,63 @@
+/* Reset some default styles */
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Hero section with background image and overlay */
+/* Fullscreen hero section */
 .hero-section {
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1610274964733-e6ed5b4d3da1') no-repeat center center/cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-}
-
-/* Light overlay for contrast */
-.hero-section::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(2px);
-  z-index: 1;
-}
-
-/* Text content wrapper */
-.hero-content {
-  position: relative;
-  z-index: 2;
+  padding: 60px 20px;
+  min-height: 100vh;
+  background: linear-gradient(to right, #fff0f6, #fce4ec);
   text-align: center;
-  padding: 20px;
-  max-width: 700px;
 }
 
-/* Title styling */
+/* Main title */
 .hero-title {
-  font-family: 'Playfair Display', serif;
   font-size: 3rem;
-  color: #9c1c5d;
+  color: #c2185b;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
-/* Subtitle paragraph */
+/* Subtitle */
 .hero-subtitle {
   font-size: 1.2rem;
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 35px;
-  padding: 0 10px;
+  color: #6a1b9a;
+  margin-bottom: 30px;
+  max-width: 600px;
 }
 
-/* CTA Button */
+/* Browse Collection Button */
 .hero-button {
-  padding: 14px 30px;
+  padding: 12px 28px;
   font-size: 1rem;
-  background-color: #9c1c5d;
-  color: #fff;
+  background-color: #d81b60;
+  color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 .hero-button:hover {
-  background-color: #7d154a;
-  transform: scale(1.05);
+  background-color: #ad1457;
+}
+
+/* Login link */
+a {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #6a1b9a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  border-bottom: 1px solid #6a1b9a;
 }
