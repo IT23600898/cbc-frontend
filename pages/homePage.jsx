@@ -2,19 +2,19 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-100 to-yellow-100 p-6">
-      <div className="text-center max-w-xl">
-        <h1 className="text-4xl md:text-5xl font-bold text-pink-600 mb-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 to-blue-800 p-6">
+      <div className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-10 max-w-2xl text-center">
+        <h1 className="text-5xl font-extrabold text-indigo-800 mb-6 tracking-tight leading-snug">
           Redefine Your Natural Beauty
         </h1>
-        <p className="text-lg text-gray-700 mb-8">
+        <p className="text-lg text-gray-800 mb-8">
           Explore our luxury collection of skincare, cosmetics, and wellness products made for modern women who glow inside and out.
         </p>
-        <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-xl font-semibold transition duration-300">
+        <button className="bg-indigo-700 hover:bg-indigo-800 text-white px-8 py-3 rounded-full text-lg font-medium transition duration-300 shadow-md hover:shadow-xl">
           Browse Collection
         </button>
         <div className="mt-6">
-          <Link to="/login" className="text-pink-700 underline hover:text-pink-900">
+          <Link to="/login" className="text-indigo-600 underline hover:text-indigo-800 transition duration-200">
             Login
           </Link>
         </div>
