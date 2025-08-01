@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, Routes, Route } from "react-router-dom";
 import { FaTachometerAlt, FaBoxOpen, FaShoppingCart, FaUsers } from "react-icons/fa";
 
 export default function AdminHomePage() {
@@ -42,9 +43,14 @@ export default function AdminHomePage() {
       </div>
 
       {/* Main Content */}
-      <div className="w-[80%] h-full bg-white p-6">
-        <h1 className="text-3xl font-semibold text-gray-800">Welcome, Admin!</h1>
-        {/* Additional dashboard content can go here */}
+      <div className="w-[80%] h-full bg-white p-6 overflow-y-auto">
+        <Routes>
+          <Route path="/dashboard" element={<h1>Dashboard</h1>} />
+          <Route path="/products" element={<h1>Products</h1>} />
+          <Route path="/orders" element={<h1>Orders</h1>} />
+          <Route path="/customers" element={<h1>Customers</h1>} />
+          <Route path="/*" element={<h1>404 - Admin page not found</h1>} />
+        </Routes>
       </div>
     </div>
   );
