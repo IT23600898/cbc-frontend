@@ -7,8 +7,8 @@ import UserData from './components/userData'
 import Testing from './components/testing'
 import LoginPage from '../pages/loginPage'
 import HomePage from '../pages/homePage'
-
 import { BrowserRouter , Routes, Route } from 'react-router-dom'
+import AdminHomePage from '../pages/adminHomePage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,17 +20,16 @@ function App() {
   <Routes path="/*">
      <Route path= "/" element={<HomePage/>}/>
      <Route path= "/login" element={<LoginPage/>}/>
-     <Route path= "/signup" element={<LoginPage/>}/>
-     <Route path= "/*" element={<h1>404 Error</h1>}/>
+     <Route path= "/signup" element={<UserData/>}/>
+      <Route path= "/admin" element={<AdminHomePage/>}/>
+     <Route path= "/*" element={<AdminHomePage/>}/>
 
   </Routes>
   
 
 
   </BrowserRouter>
-    <div className='text-3xl font-bold underline'>
-      hello
-    </div>
+  
     </>
   )
 }
