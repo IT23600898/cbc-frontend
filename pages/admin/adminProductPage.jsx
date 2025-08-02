@@ -65,14 +65,19 @@ export default function AdminProductPage(){
     console.log(products)
 
     return(
-        <div>
+        <div style={{ padding: "20px" }}>
             <h1>Admin Products Page</h1>
+
+
             {
                 products.map(
-                    
-                    (product)=>{
+
+                    (product, index)=>{
                         return(
-                            <div>
+
+
+                            <div key={index}>
+                                {index}
                                 {product.productName}
                             </div>
                         )
