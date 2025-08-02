@@ -1,10 +1,9 @@
 import axios from "axios";
+import { useState } from "react";
 export default function AdminProductPage(){
  
     const [products, setProducts] = useState([
-        {
-    "List": [
-        {
+         {
             "_id": "68867a2252ffad990b806874",
             "productId": "PROD001",
             "productName": "Rose Water Toner",
@@ -61,12 +60,10 @@ export default function AdminProductPage(){
             "description": "A powerful Vitamin C serum that helps reduce dark spots, brighten complexion, and improve skin elasticity.",
             "__v": 0
         }
-    ]
-}
     ])
-
-    console.log(products)
  
+    console.log(products)
+
     return(
         <div>
             <h1>Admin Products Page</h1>
