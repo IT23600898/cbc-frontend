@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
-export default function AdminProductPage(){
- 
+import { useEffect, useState } from "react";
+export default function AdminProductPage() {
+
     const [products, setProducts] = useState([
-         {
+        {
             "_id": "68867a2252ffad990b806874",
             "productId": "PROD001",
             "productName": "Rose Water Toner",
@@ -61,10 +61,19 @@ export default function AdminProductPage(){
             "__v": 0
         }
     ])
- 
-    console.log(products)
 
-    return(
+    useEffect(() => {
+
+        axios.get("http://localhost:5000/api/products").then(
+            (res) => {
+                console.log(res.data.List)
+                setProducts(res.data.List)
+
+            })
+    },[])
+
+
+    return (
         <div style={{ padding: "20px" }}>
             <h1>Admin Products Page</h1>
 
@@ -72,8 +81,8 @@ export default function AdminProductPage(){
             {
                 products.map(
 
-                    (product, index)=>{
-                        return(
+                    (product, index) => {
+                        return (
 
 
                             <div key={index}>
@@ -86,10 +95,5 @@ export default function AdminProductPage(){
             }
         </div>
     )
-}
-
-async function getProducts(){
-    const res = await axios.get("http://localhost:5000/api/products")
-    console.log(res)
 }
 
