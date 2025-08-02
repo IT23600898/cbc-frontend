@@ -15,6 +15,8 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
+
+  
     <>
   <BrowserRouter>
   <Toaster/>
@@ -23,10 +25,12 @@ function App() {
      <Route path= "/" element={<HomePage/>}/>
      <Route path= "/login" element={<LoginPage/>}/>
      <Route path= "/signup" element={<UserData/>}/>
-      <Route path= "/admin" element={<AdminHomePage/>}/>
-     <Route path= "/*" element={<AdminHomePage/>}/>
+      <Route path= "/admin/*" element={<AdminHomePage/>}/>
+     <Route path= "/*" element={<HomePage/>}/>
 
   </Routes>
+
+
   
 
 
