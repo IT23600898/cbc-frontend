@@ -67,6 +67,13 @@ export default function AdminProductPage(){
     return(
         <div>
             <h1>Admin Products Page</h1>
+            {
+                products.map(
+                    (product)=>{
+                        console.log(product)
+                    }
+                )
+            }
         </div>
     )
 }
@@ -75,3 +82,4 @@ async function getProducts(){
     const res = await axios.get("http://localhost:5000/api/products")
     console.log(res)
 }
+

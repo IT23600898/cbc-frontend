@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { FaBoxOpen, FaShoppingCart, FaUsers } from "react-icons/fa";
+import AdminProductPage from "./admin/adminProductPage";
 
 export default function AdminHomePage() {
     return (
@@ -27,7 +28,7 @@ export default function AdminHomePage() {
             <div className="w-[80%] h-screen bg-white">
               <Routes path="/*">
                 <Route path="/dashboard" element={<h1>Dashboard</h1>}/>
-                <Route path="/products" element={<h1>Products</h1>}/>
+                <Route path="/products" element={<AdminProductPage/>}/>
                 <Route path="/orders" element={<h1>Orders</h1>}/>
                 <Route path="/customers" element={<h1>Customers</h1>}/>
                 <Route path= "/*" element={<h1>404 not found the admin page</h1>}/>
