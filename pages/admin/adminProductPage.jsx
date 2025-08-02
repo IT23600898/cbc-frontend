@@ -69,8 +69,13 @@ export default function AdminProductPage(){
             <h1>Admin Products Page</h1>
             {
                 products.map(
+                    
                     (product)=>{
-                        console.log(product)
+                        return(
+                            <div>
+                                {product.productName}
+                            </div>
+                        )
                     }
                 )
             }
