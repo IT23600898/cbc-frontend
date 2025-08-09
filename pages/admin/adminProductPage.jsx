@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function AdminProductPage() {
     const [products, setProducts] = useState([]);
@@ -14,7 +15,15 @@ export default function AdminProductPage() {
     }, []);
 
     return (
-        <div className="p-6 bg-gray-100 min-h-screen">
+        <div className="p-6 bg-gray-100 min-h-screen relative">
+            {/* Floating Add Button */}
+            <Link to={"admin/products/addProduct"}
+                className="absolute right-6 bottom-6 text-white bg-purple-700 hover:bg-purple-800 transition-all duration-300 p-5 rounded-full shadow-lg hover:shadow-xl focus:outline-none"
+                title="Add New Product"
+            >
+                <FaPlus size={22} />
+            </Link>
+
             {/* Topic Heading */}
             <h1 className="text-3xl font-bold text-gray-800 mb-8">Admin Products Page</h1>
 
