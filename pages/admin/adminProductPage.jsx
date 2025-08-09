@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FaTrash } from "react-icons/fa";
+import { FaPencil } from "react-icons/fa6";
 export default function AdminProductPage() {
 
     const [products, setProducts] = useState([
@@ -89,7 +91,6 @@ export default function AdminProductPage() {
 
                 </thead>
                 <tbody>
-                   
                     {
                     products.map(
                      (product, index) => {
