@@ -76,23 +76,39 @@ export default function AdminProductPage() {
     return (
         <div style={{ padding: "20px" }}>
             <h1>Admin Products Page</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Lst Price</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
 
+                </thead>
+                <tbody>
+                   
+                    {
+                    products.map(
+                     (product, index) => {
+                         return  <tr key={index}>
+                                 <td>{product.productId}</td>
+                                 <td>{product.productName}</td>
+                                 <td>{product.price}</td>
+                                 <td>{product.lastPrice}</td>
+                                 <td>{product.description}</td>
+                                 <td>
+                                    <button>Edit</button>
+                                    <button>Delete</button>
+                                 </td>
+                             </tr>
+                     }) 
+                }
 
-            {
-                products.map(
-
-                    (product, index) => {
-                        return (
-
-
-                            <div key={index}>
-                                {index}
-                                {product.productName}
-                            </div>
-                        )
-                    }
-                )
-            }
+                </tbody>
+            </table>
         </div>
     )
 }
