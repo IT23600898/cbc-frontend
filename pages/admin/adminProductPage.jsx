@@ -17,7 +17,8 @@ export default function AdminProductPage() {
     return (
         <div className="p-6 bg-gray-100 min-h-screen relative">
             {/* Floating Add Button */}
-            <Link to={"admin/products/addProduct"}
+            <Link
+                to={"/admin/products/addProduct"}
                 className="absolute right-6 bottom-6 text-white bg-purple-700 hover:bg-purple-800 transition-all duration-300 p-5 rounded-full shadow-lg hover:shadow-xl focus:outline-none"
                 title="Add New Product"
             >
@@ -36,6 +37,7 @@ export default function AdminProductPage() {
                             <th className="px-6 py-4 font-semibold">Product Name</th>
                             <th className="px-6 py-4 font-semibold">Price</th>
                             <th className="px-6 py-4 font-semibold">Last Price</th>
+                            <th className="px-6 py-4 font-semibold">Stock</th>
                             <th className="px-6 py-4 font-semibold">Description</th>
                             <th className="px-6 py-4 font-semibold text-center">Action</th>
                         </tr>
@@ -55,6 +57,9 @@ export default function AdminProductPage() {
                                 </td>
                                 <td className="px-6 py-4 line-through text-red-500">
                                     Rs. {product.lastPrice}
+                                </td>
+                                <td className="px-6 py-4 font-semibold text-gray-800">
+                                    {product.stock}
                                 </td>
                                 <td className="px-6 py-4 text-gray-600">
                                     {product.description}
