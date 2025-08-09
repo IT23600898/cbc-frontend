@@ -100,8 +100,8 @@ export default function AdminProductPage() {
                                  <td>{product.lastPrice}</td>
                                  <td>{product.description}</td>
                                  <td>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <FaTrash/>
+                                    <FaPencil/>
                                  </td>
                              </tr>
                      }) 
