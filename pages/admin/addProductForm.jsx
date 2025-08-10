@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProductForm() {
   const [productId, setProductId] = useState("");
@@ -11,6 +12,7 @@ export default function AddProductForm() {
   const [lastPrice, setLastPrice] = useState("");
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
+  const navigate = useNavigate()
 
   async function handleSubmit(){
    const altNames = alternativeName.split(",")
@@ -38,7 +40,7 @@ export default function AddProductForm() {
     })
     toast.success("Product added successfully.")
     }catch(err){
-        console.log(err)
+        toast.error("Failed to add Product.")
     }
 }
 
