@@ -1,17 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export default function AdminProductPage() {
     const [products, setProducts] = useState([]);
+    const [productsLoaded, setProductsLoaded] = useState(false);
+    
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/products").then((res) => {
+        if(!productsLoaded){
+            axios.get("http://localhost:5000/api/products").then((res) => {
             console.log(res.data.List);
             setProducts(res.data.List);
-        });
+            setProductsLoaded(true);
+           });
+        }
     }, []);
 
     return (
@@ -24,6 +30,8 @@ export default function AdminProductPage() {
             >
                 <FaPlus size={22} />
             </Link>
+
+        
 
             {/* Topic Heading */}
             <h1 className="text-3xl font-bold text-gray-800 mb-8">Admin Products Page</h1>
@@ -53,10 +61,10 @@ export default function AdminProductPage() {
                                     {product.productName}
                                 </td>
                                 <td className="px-6 py-4 text-green-600 font-semibold">
-                                    Rs. {product.price}
+                                     {product.price}
                                 </td>
                                 <td className="px-6 py-4 line-through text-red-500">
-                                    Rs. {product.lastPrice}
+                                     {product.lastPrice}
                                 </td>
                                 <td className="px-6 py-4 font-semibold text-gray-800">
                                     {product.stock}
@@ -65,7 +73,23 @@ export default function AdminProductPage() {
                                     {product.description}
                                 </td>
                                 <td className="px-6 py-4 flex justify-center gap-4">
-                                    <button className="text-red-500 hover:text-red-700 transition-colors">
+                                    <button className="text-red-500 hover:text-red-700 transition-colors"
+                                    title="Delete"
+                                    
+                                    onClick={()=>{
+                                        alert(product.productId)
+                                        const token = localStorage.getItem("token");
+                                        axios.delete(`http://localhost:5000/api/products/${product.productId}`, {
+                                                headers: {
+                                                      Authorization: "Bearer "+token
+                                                },
+                                        }).then((res)=>{
+                                            console.log(res.data.List);
+                                            toast.success("Product Deleted Successfully")
+                                            window.location.reload();
+                                        })
+                                    }}>
+                    
                                         <FaTrash size={18} />
                                     </button>
                                     <button className="text-blue-500 hover:text-blue-700 transition-colors">
@@ -80,3 +104,4 @@ export default function AdminProductPage() {
         </div>
     );
 }
+

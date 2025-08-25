@@ -21,7 +21,7 @@ export default function AddProductForm() {
    const product = {
     productId : productId,
     productName : productName,
-    altNames : altNames,
+    alternativeName : altNames,
     images : imgUrls,
     price : price,
     lastPrice : lastPrice,
@@ -35,9 +35,10 @@ export default function AddProductForm() {
     try{
         await axios.post("http://localhost:5000/api/products",product,{
         headers : {
-            Authorization : "Bearer"+token
+            Authorization : "Bearer "+token
         }
     })
+    navigate("/admin/products")
     toast.success("Product added successfully.")
     }catch(err){
         toast.error("Failed to add Product.")
