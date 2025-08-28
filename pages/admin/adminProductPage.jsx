@@ -18,7 +18,7 @@ export default function AdminProductPage() {
             setProductsLoaded(true);
            });
         }
-    }, []);
+    }, [productsLoaded]);
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen relative">
@@ -35,9 +35,9 @@ export default function AdminProductPage() {
 
             {/* Topic Heading */}
             <h1 className="text-3xl font-bold text-gray-800 mb-8">Admin Products Page</h1>
-
-            {/* Table Container */}
-            <div className="overflow-x-auto bg-white rounded-lg shadow-md p-4">
+            
+            {
+                productsLoaded?<div className="overflow-x-auto bg-white rounded-lg shadow-md p-4">
                 <table className="min-w-full text-sm text-left text-gray-700 border-collapse">
                     <thead className="bg-gray-200">
                         <tr>
@@ -86,7 +86,7 @@ export default function AdminProductPage() {
                                         }).then((res)=>{
                                             console.log(res.data.List);
                                             toast.success("Product Deleted Successfully")
-                                            window.location.reload();
+                                            setProductsLoaded(false);
                                         })
                                     }}>
                     
@@ -100,7 +100,10 @@ export default function AdminProductPage() {
                         ))}
                     </tbody>
                 </table>
+            </div>: <div className="w-full h-full flex justify-center items-center">
+                <div className="w-[60px] h-[60px] border-[4px] border-gray-200 border-b-[#3b82f6] animate-spin rounded-full"></div>
             </div>
+            }
         </div>
     );
 }
