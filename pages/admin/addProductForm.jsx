@@ -7,7 +7,6 @@ export default function AddProductForm() {
   const [productId, setProductId] = useState("");
   const [productName, setProductName] = useState("");
   const [alternativeName, setAlternativeName] = useState("");
-  const [images, setImages] = useState("");
   const [imageFiles, setImageFiles] = useState([]);
   const [price, setPrice] = useState("");
   const [lastPrice, setLastPrice] = useState("");
@@ -28,7 +27,7 @@ async function handleSubmit() {
   const imgUrls = await Promise.all(promisesArray); 
   console.log("Uploaded image URLs:", imgUrls);
 
-  return
+  
 
  const product = { 
   productId : productId, 
