@@ -8,42 +8,55 @@ export default function AddProductForm() {
   const [productName, setProductName] = useState("");
   const [alternativeName, setAlternativeName] = useState("");
   const [images, setImages] = useState("");
+  const [imageFiles, setImageFiles] = useState([]);
   const [price, setPrice] = useState("");
   const [lastPrice, setLastPrice] = useState("");
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate()
 
-  async function handleSubmit(){
-   const altNames = alternativeName.split(",")
-   const imgUrls = images.split(",")
+async function handleSubmit() {
+  const altNames = alternativeName.split(",");
 
-   const product = {
-    productId : productId,
-    productName : productName,
-    alternativeName : altNames,
-    images : imgUrls,
-    price : price,
-    lastPrice : lastPrice,
-    stock : stock,
-    description : description
+  const promisesArray = []; 
+  
+  for (let i = 0; i < imageFiles.length; i++) {
+    promisesArray[i] = uploadMediaToSupabase(imageFiles[i]);
+    console.log(imageFiles[i]);
+  }
 
-    }
+  const imgUrls = await Promise.all(promisesArray); 
+  console.log("Uploaded image URLs:", imgUrls);
 
-    const token = localStorage.getItem("token")
+  return
 
-    try{
-        await axios.post("http://localhost:5000/api/products",product,{
-        headers : {
-            Authorization : "Bearer "+token
-        }
-    })
-    navigate("/admin/products")
-    toast.success("Product added successfully.")
-    }catch(err){
-        toast.error("Failed to add Product.")
-    }
+ const product = { 
+  productId : productId, 
+  productName : productName, 
+  alternativeName : altNames, 
+  images : imgUrls, 
+  price : price, 
+  lastPrice : lastPrice, 
+  stock : stock, 
+  description : description 
 }
+
+  const token = localStorage.getItem("token");
+
+  try {
+    await axios.post("http://localhost:5000/api/products", product, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    navigate("/admin/products");
+    toast.success("Product added successfully.");
+  } catch (err) {
+    console.log(err);
+    toast.error("Failed to add Product.");
+  }
+}
+
 
 
   return (
@@ -93,12 +106,18 @@ export default function AddProductForm() {
           <div className="flex flex-col">
             <label className="mb-2 font-semibold text-gray-700">Images URLs (comma separated)</label>
             <input
-              type="text"
+              type="file"
               className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
               placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
-              value={images}
-              onChange={(e) => setImages(e.target.value)}
-              required
+              onChange={(e)=>{
+                
+
+                const files = Array.from(e.target.files); 
+                setImageFiles(files);
+                console.log("Selected files:", files);
+
+              }}
+              multiple
             />
           </div>
 
