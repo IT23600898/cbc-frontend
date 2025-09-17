@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductNotFound from "./productNotFound";
 import ImageSlider from "../../src/components/imageSlider";
+import { addToCart } from "../../src/utils/cartFunction";
+import toast from "react-hot-toast";
 
 export default function ProductOverview() {
 
@@ -30,7 +32,12 @@ export default function ProductOverview() {
                 setStatus("not-found");
             });
 
-    }, [productId]);
+    }, []);
+
+    function handleAddToCart(){
+      addToCart(product.productId,1)
+      toast.success(product.productId+" Added to cart")
+    }
 
     return (
         <div className="w-full h-[calc(100vh-100px)] bg-fuchsia-300">
@@ -73,7 +80,16 @@ export default function ProductOverview() {
       <p className="text-gray-600 max-w-md leading-relaxed">
         {product.description}
       </p>
+
+      <button 
+        onClick={handleAddToCart} 
+        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 w-fit"
+      >
+        Add to Cart
+      </button>
+
     </div>
+    
   </div>
 )}
 

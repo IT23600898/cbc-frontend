@@ -11,7 +11,7 @@ export default function ProductCard({ product }) {
             className='h-40 w-40 object-cover rounded-md mb-2'
           />
           <h1 className='font-semibold text-lg'>{product.productName}</h1>
-          <p className='text-gray-600 text-sm text-center'>{product.description}</p>
+          <p className='text-gray-600 text-sm text-center'>{product.productId}</p>
           <p className='text-green-600 font-bold'>Rs. {product.price}</p>
         </div>
       </Link>
