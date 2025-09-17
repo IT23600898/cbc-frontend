@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminProductPage() {
     const [products, setProducts] = useState([]);
@@ -19,6 +19,8 @@ export default function AdminProductPage() {
            });
         }
     }, [productsLoaded]);
+
+    const navigate = useNavigate();
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen relative">
@@ -60,7 +62,7 @@ export default function AdminProductPage() {
                                 <td className="px-6 py-4 font-medium text-gray-900">
                                     {product.productName}
                                 </td>
-                                <td className="px-6 py-4 text-green-600 font-semibold">
+                                <td className="px-6 py-4 text-green-600 font-semibold">  
                                      {product.price}
                                 </td>
                                 <td className="px-6 py-4 line-through text-red-500">
@@ -92,7 +94,12 @@ export default function AdminProductPage() {
                     
                                         <FaTrash size={18} />
                                     </button>
-                                    <button className="text-blue-500 hover:text-blue-700 transition-colors">
+                                    <button className="text-blue-500 hover:text-blue-700 transition-colors" title="Edit" 
+                                    onClick={()=>{
+                                        //move to edit product form
+                                        navigate("/admin/products/editProduct", {state : {product : product }});
+
+                                    }}>
                                         <FaPencil size={18} />
                                     </button>
                                 </td>
