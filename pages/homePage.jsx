@@ -2,6 +2,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import NavBar from '../src/components/navBar';
 import LoginPage from './loginPage';
 import ProductOverview from './home/productOverview';
+import ProductPage from './home/product';
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
         <Route path="/" element={<h1>Home Page</h1>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/productInfo/:id" element={<ProductOverview/>} />
+        <Route path="/products" element={<ProductPage/>} />
   
       </Routes>
       </div>
